@@ -20,15 +20,28 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-        'Despesas',
-        style: TextStyle(fontSize: 28, color: Colors.white),
+        'Despesas Pessoais',
+        style: TextStyle(fontSize: 25, color: Colors.white)
            ),
       backgroundColor: Colors.blue,
-      ),
-      body: Center(child: Text(
-        'Começo da aplicação!',
-        style: TextStyle(fontSize: 20),
-        )
+      ), 
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[ 
+          Container(
+            child: Card(
+                color: Colors.blue,
+                elevation: 5,
+                child: Text('Gráfico 1'),
+            ),
+          ),
+        Card(
+                color: Colors.red,
+                elevation: 5,
+                child: Text('Lista de despesas'),
+          )
+        ]
       ),
     );
   }
