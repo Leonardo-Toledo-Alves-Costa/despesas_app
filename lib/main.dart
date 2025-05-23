@@ -43,7 +43,6 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.blue,
       ), 
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[ 
           Container(
@@ -77,6 +76,26 @@ class HomePage extends StatelessWidget {
                 ],
               )
             );}).toList(),
+          ),
+          Card(
+            elevation: 5,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Título da transação', labelStyle: TextStyle(fontWeight: FontWeight.bold)),
+                    ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Valor em R\$', labelStyle: TextStyle(fontWeight: FontWeight.bold)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Adicionar transação', style: TextStyle(color: Colors.black),),
+                  )
+                ],
+              ),
+            ),
           )
         ],
       )
