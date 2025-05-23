@@ -55,11 +55,24 @@ class HomePage extends StatelessWidget {
             Column(
               children: _transactions.map((tr){
                 return Card(
-                  child: Text(tr.title));}
-                ).toList(),
+                  color: Colors.green,
+                  child: Row(
+                    children: [
+                      Container(
+                        child: Text('R\$${tr.price.toString()}'),
+                      ),
+                    Column(
+                      children: [
+                        Text(tr.title),
+                        Text(tr.date.toString())
+                      ],
+                  )
+                ],
               )
-            ],
+            );}).toList(),
           )
-     );
+        ],
+      )
+    );
   }
 } 
