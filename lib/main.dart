@@ -55,16 +55,22 @@ class HomePage extends StatelessWidget {
             Column(
               children: _transactions.map((tr){
                 return Card(
-                  color: Colors.green,
+                  color: Colors.blue,
                   child: Row(
                     children: [
                       Container(
-                        child: Text('R\$${tr.price.toString()}'),
+                        margin: EdgeInsets.all(15),
+                        decoration: BoxDecoration(border: Border(right: BorderSide(color: Colors.black, width: 1))),
+                        padding: EdgeInsets.all(10),
+                        child: Text('R\$${tr.price.toString()}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                       ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(tr.title),
-                        Text(tr.date.toString())
+                        Container(child: Text(tr.title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)
+                        ),
+                        Container(child: Text(tr.date.toString(), style: TextStyle(fontSize: 15, color: Colors.grey[700]),)
+                        )
                       ],
                   )
                 ],
