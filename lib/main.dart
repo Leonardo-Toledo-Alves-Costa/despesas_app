@@ -1,4 +1,4 @@
-
+import 'package:despesas_app/models/transaction.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(DespesasApp());
@@ -13,7 +13,23 @@ class DespesasApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+    HomePage({super.key});
+
+  final _transactions = [
+    Transaction(
+      id: 'C1', 
+      title: 'Mouse Gamer', 
+      price: 274.45, 
+      date: DateTime.now()
+      ),
+      Transaction(
+      id: 'C2', 
+      title: 'Toninho', 
+      price: 150.50, 
+      date: DateTime.now())
+  ];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +52,14 @@ class HomePage extends StatelessWidget {
                 child: Text('Gráfico 1'),
             ),
           ),
-        Card(
-                color: Colors.red,
-                elevation: 5,
-                child: Text('Lista de despesas'),
+            Column(
+              children: _transactions.map((tr){
+                return Card(
+                  child: Text(tr.title));}
+                ).toList(),
+              )
+            ],
           )
-        ]
-      ),
-    );
+     );
   }
 } 
