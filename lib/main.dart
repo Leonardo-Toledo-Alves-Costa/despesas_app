@@ -1,5 +1,6 @@
 import 'package:despesas_app/models/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() => runApp(DespesasApp());
 
@@ -62,14 +63,14 @@ class HomePage extends StatelessWidget {
                         margin: EdgeInsets.all(15),
                         decoration: BoxDecoration(border: Border(right: BorderSide(color: Colors.black, width: 1))),
                         padding: EdgeInsets.all(10),
-                        child: Text('R\$${tr.price.toString()}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                        child: Text('R\$${tr.price.toStringAsFixed(2)}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                       ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(child: Text(tr.title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)
                         ),
-                        Container(child: Text(tr.date.toString(), style: TextStyle(fontSize: 15, color: Colors.grey[700]),)
+                        Container(child: Text(DateFormat('d MMM y').format(tr.date), style: TextStyle(fontSize: 15, color: Colors.grey[700]),)
                         )
                       ],
                   )
