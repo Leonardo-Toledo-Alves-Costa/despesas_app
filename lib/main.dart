@@ -8,11 +8,26 @@ import 'package:despesas_app/models/transaction.dart';
 void main() => runApp(DespesasApp());
 
 class DespesasApp extends StatelessWidget {
-  const DespesasApp({super.key});
+  DespesasApp({super.key});
+  final ThemeData tema = ThemeData();
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: HomePage());
+    return MaterialApp(
+      home: const HomePage(),
+      theme: ThemeData(
+        useMaterial3: false,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.blue,
+        ),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.black,
+          primary: Colors.white,
+          secondary: Colors.blue,
+        ),
+      ),
+    );
   }
 }
 
@@ -50,7 +65,9 @@ class _HomePageState extends State<HomePage> {
   setState(() {
     _transactions.add(newTransaction);
     });
-  }
+
+    Navigator.of(context).pop();
+}
 
 
 _openTransactionFormModal(BuildContext context){
