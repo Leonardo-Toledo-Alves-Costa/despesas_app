@@ -13,13 +13,6 @@ class TransactionList extends StatelessWidget {
     return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[ 
-          Container(
-            child: Card(
-                color: Colors.blue,
-                elevation: 5,
-                child: Text('Gráfico 1'),
-            ),
-          ),
             Column(
               children: transactions.map((tr){
                 return Card(

@@ -9,7 +9,7 @@ class DespesasApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomePage());
+    return const MaterialApp(home: HomePage());
   }
 }
 
@@ -31,18 +31,20 @@ class HomePage extends StatelessWidget {
            ),
       backgroundColor: Colors.blue,
       ), 
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[ 
-          Container(
-            child: Card(
-                color: Colors.blue,
-                elevation: 5,
-                child: Text('Gráfico 1'),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[ 
+            SizedBox(
+              child: Card(
+                  color: Colors.blue,
+                  elevation: 5,
+                  child: Text('Gráfico 1'),
+              ),
             ),
-          ),
-          TransactionUser(),
-        ],
+            TransactionUser(),
+          ],
+        ),
       )
     );
   }
