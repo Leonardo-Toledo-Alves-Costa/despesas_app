@@ -49,43 +49,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
     final List<Transaction> _transactions = [
-    Transaction(
-      id: 'C1', 
-      title: 'Mouse Gamer', 
-      price: 274.45, 
-      date: DateTime.now()
-      ),
-      Transaction(
-      id: 'C2', 
-      title: 'Toninho', 
-      price: 150.50, 
-      date: DateTime.now()),
-            Transaction(
-      id: 'C0', 
-      title: 'Toninho1', 
-      price: 50.50, 
-      date: DateTime.now()),
-            Transaction(
-      id: 'C3', 
-      title: 'Toninho2', 
-      price: 1550.50, 
-      date: DateTime.now()),
-            Transaction(
-      id: 'C4', 
-      title: 'Toninho3', 
-      price: 1350.50, 
-      date: DateTime.now()),
-            Transaction(
-      id: 'C5', 
-      title: 'Toninho4', 
-      price: 1510.50, 
-      date: DateTime.now()),
-            Transaction(
-      id: 'C6', 
-      title: 'Toninho5', 
-      price: 1530.50, 
-      date: DateTime.now()),
-      
   ];
 
     List<Transaction> get _recentTransactions {
@@ -96,12 +59,12 @@ class _HomePageState extends State<HomePage> {
     }).toList();
   }
 
-    _addTransaction(String title, double price){
+    _addTransaction(String title, double price, DateTime date){
     final newTransaction = Transaction(
       id: Random().nextDouble().toString(),
       title: title, 
       price: price, 
-      date: DateTime.now()
+      date: date,
     );
 
   setState(() {
@@ -111,15 +74,21 @@ class _HomePageState extends State<HomePage> {
     Navigator.of(context).pop();
 }
 
+  _removeTransaction(String id){
+    setState(() {
+      _transactions.removeWhere((tr) => tr.id == id);
+    });
+  }
 
-_openTransactionFormModal(BuildContext context){
-  showModalBottomSheet(
-  context: context,
-  builder: (_) {
-      return TransactionForm(_addTransaction);
-    },
-  );
-}
+
+  _openTransactionFormModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        return TransactionForm(_addTransaction);
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +105,7 @@ _openTransactionFormModal(BuildContext context){
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[ 
       Chart(_recentTransactions),
-      TransactionList(_transactions),
+      TransactionList(_transactions, _removeTransaction),
           ],
         ),
       ),

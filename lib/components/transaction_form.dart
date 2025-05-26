@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 class TransactionForm extends StatefulWidget {
   const TransactionForm(this.onSubmit, {super.key});
 
-   final void Function(String title, double price) onSubmit;
+   final void Function(String title, double price, DateTime) onSubmit;
 
   @override
   State<TransactionForm> createState() => _TransactionFormState();
@@ -14,15 +14,15 @@ class _TransactionFormState extends State<TransactionForm> {
     final _titleController = TextEditingController();
 
     final _priceController = TextEditingController();
-    DateTime? _selectedDate;
+    DateTime? _selectedDate = DateTime.now();
 
     _submitForm(){
     final title = _titleController.text;
     final price = double.tryParse(_priceController.text) ?? 0;
-  if(title.isEmpty || price <= 0){
+  if(title.isEmpty || price <= 0 || _selectedDate == null){
     return;
   }
-    widget.onSubmit(title, price);
+    widget.onSubmit(title, price, _selectedDate!);
     
   }
 
