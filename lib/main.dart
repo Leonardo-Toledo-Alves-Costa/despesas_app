@@ -1,3 +1,4 @@
+import 'package:despesas_app/components/chart.dart';
 import 'package:despesas_app/components/transaction_form.dart';
 import 'components/transaction_list.dart';
 import 'package:flutter/material.dart';
@@ -54,6 +55,14 @@ class _HomePageState extends State<HomePage> {
       date: DateTime.now())*/
   ];
 
+    List<Transaction> get _recentTransactions {
+    return _transactions.where((tr) {
+      return tr.date.isAfter(DateTime.now().subtract(
+        const Duration(days: 7),
+      ));
+    }).toList();
+  }
+
     _addTransaction(String title, double price){
     final newTransaction = Transaction(
       id: Random().nextDouble().toString(),
@@ -100,6 +109,7 @@ _openTransactionFormModal(BuildContext context){
                   child: Text('Gráfico 1'),
               ),
             ),
+      Chart(_recentTransactions),
       TransactionList(_transactions),
           ],
         ),
