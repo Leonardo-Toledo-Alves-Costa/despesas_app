@@ -99,6 +99,15 @@ class _HomePageState extends State<HomePage> {
         style: TextStyle(fontSize: 25, color: Colors.white)
            ),
       backgroundColor: Colors.blue,
+        actions: [
+    Padding(
+      padding: const EdgeInsets.only(right: 16.0),
+      child: CircleAvatar(
+        backgroundImage: AssetImage('assets/images/logoAsimov.png'),
+        radius: 20,
+      ),
+    ),
+  ],
       ), 
       body: SingleChildScrollView(
         child: Column(
