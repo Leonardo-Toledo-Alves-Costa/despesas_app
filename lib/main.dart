@@ -17,6 +17,13 @@ class DespesasApp extends StatelessWidget {
     return MaterialApp(
       home: const HomePage(),
       theme: ThemeData(
+        primarySwatch: Colors.blue,
+        textTheme: ThemeData.light().textTheme.copyWith(
+          labelLarge: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white
+          ),
+        ),
         useMaterial3: false,
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.white,
@@ -42,7 +49,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
     final List<Transaction> _transactions = [
-    /*Transaction(
+    Transaction(
       id: 'C1', 
       title: 'Mouse Gamer', 
       price: 274.45, 
@@ -52,7 +59,33 @@ class _HomePageState extends State<HomePage> {
       id: 'C2', 
       title: 'Toninho', 
       price: 150.50, 
-      date: DateTime.now())*/
+      date: DateTime.now()),
+            Transaction(
+      id: 'C0', 
+      title: 'Toninho1', 
+      price: 50.50, 
+      date: DateTime.now()),
+            Transaction(
+      id: 'C3', 
+      title: 'Toninho2', 
+      price: 1550.50, 
+      date: DateTime.now()),
+            Transaction(
+      id: 'C4', 
+      title: 'Toninho3', 
+      price: 1350.50, 
+      date: DateTime.now()),
+            Transaction(
+      id: 'C5', 
+      title: 'Toninho4', 
+      price: 1510.50, 
+      date: DateTime.now()),
+            Transaction(
+      id: 'C6', 
+      title: 'Toninho5', 
+      price: 1530.50, 
+      date: DateTime.now()),
+      
   ];
 
     List<Transaction> get _recentTransactions {
@@ -102,13 +135,6 @@ _openTransactionFormModal(BuildContext context){
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[ 
-            SizedBox(
-              child: Card(
-                  color: Colors.blue,
-                  elevation: 5,
-                  child: Text('Gráfico 1'),
-              ),
-            ),
       Chart(_recentTransactions),
       TransactionList(_transactions),
           ],

@@ -11,7 +11,7 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 400,
+      height: 500,
       child: transactions.isEmpty ? Column(
         children: [
           SizedBox(height: 20,),
@@ -27,25 +27,34 @@ class TransactionList extends StatelessWidget {
         itemBuilder: (ctx, index) {
         final tr = transactions[index];
                 return Card(
-                  color: Colors.blue,
-                  child: Row(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.all(15),
-                        decoration: BoxDecoration(border: Border(right: BorderSide(color: Colors.black, width: 1))),
-                        padding: EdgeInsets.all(10),
-                        child: Text('R\$${tr.price.toStringAsFixed(2)}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
-                      ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(child: Text(tr.title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)
+                  elevation: 5,
+                  margin: const EdgeInsets.symmetric(
+                    vertical: 8,
+                    horizontal: 5,
+                  ),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.blue,
+                      radius: 30,
+                      child: Padding(
+                        padding: const EdgeInsets.all(6),
+                        child: FittedBox(
+                          child: Text(
+                            'R\$${tr.price}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
-                        Container(child: Text(DateFormat('d MMM y').format(tr.date), style: TextStyle(fontSize: 15, color: Colors.grey[700]),)
+                      ),
                     ),
-                  ],
-                ),
-              ],            
+                    title: Text(
+                      tr.title,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: Text(
+                      DateFormat('d MMM y').format(tr.date),
+               ),
             ),
           );
         },
